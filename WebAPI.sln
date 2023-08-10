@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34003.232
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication_HandleExceptions", "WebApplication_HandleExceptions\WebApplication_HandleExceptions.csproj", "{B06DF278-1885-466F-88C4-F0CF5648574A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication_ActionFilterKullanimi", "WebApplication_ActionFilterKullanimi\WebApplication_ActionFilterKullanimi.csproj", "{F9392923-385E-4AE1-87FA-023FE98DADC0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B06DF278-1885-466F-88C4-F0CF5648574A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B06DF278-1885-466F-88C4-F0CF5648574A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B06DF278-1885-466F-88C4-F0CF5648574A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9392923-385E-4AE1-87FA-023FE98DADC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9392923-385E-4AE1-87FA-023FE98DADC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9392923-385E-4AE1-87FA-023FE98DADC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9392923-385E-4AE1-87FA-023FE98DADC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
