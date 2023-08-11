@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -6,13 +6,15 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace WebApplication_BasicAuth
+namespace WebApplication_JwtAuth
 {
     public class Startup
     {
@@ -26,31 +28,43 @@ namespace WebApplication_BasicAuth
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Ben bir tane BasicAuthentication servisi ekledim ve bu servisin options'larının tipi AuthenticationSchemeOptions ve bu servisin kontrolü BasicAuthenticationHandler isimli bir class tarafından yürütülecek.
-            services.AddAuthentication("BasicAuthentication")
-                .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
-            services.AddControllers();
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = TokenService.ISSUER,
+                        ValidAudience = TokenService.AUDIENCE,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(TokenService.SECRETKEY))
+                    };
+                });
 
+
+            services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApplication_BasicAuth", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApplication_JwtAuth", Version = "v1" });
 
-                c.AddSecurityDefinition("basic", new OpenApiSecurityScheme
+                c.AddSecurityDefinition("bearer", new OpenApiSecurityScheme
                 {
-                    Description = "Burada basic auth bilgilerinizi giriniz.",
+                    Description = "Bearer Token(JWT) kullanılmıştır",
                     Name = "Authorization",
                     In = ParameterLocation.Header,
-                    Scheme = "basic",
+                    Scheme = JwtBearerDefaults.AuthenticationScheme,
                     Type = SecuritySchemeType.Http
                 });
 
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
-                    {
+                    { // dictionary olduğu için 2. bir süslü parantez açtık.
                         new OpenApiSecurityScheme
-                        {
-                            Reference=new OpenApiReference{ Type = ReferenceType.SecurityScheme,Id="basic"}
-                        },
+                         {
+                             Reference = new OpenApiReference{ Type=ReferenceType.SecurityScheme,Id="bearer"}
+                         },
                         new List<string>()
                     }
                 });
@@ -64,13 +78,13 @@ namespace WebApplication_BasicAuth
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApplication_BasicAuth v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApplication_JwtAuth v1"));
             }
 
             app.UseRouting();
 
-            app.UseAuthentication(); // kimlik doğrulama (kullanıcı adı ve şifre kontrolü) - yani her istekte önce bir kimlik doğrulama yap
-            app.UseAuthorization(); // yetki kontrolü (role doğrulaması) - yetki kontrolü yap bu methodu çalıştırmak için gerekli yetkilere sahip mi
+            app.UseAuthentication(); // kimlik doğrulaması yani gelen token'ın valid olup olmamasını kontrol ediyor.
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
