@@ -7,6 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication_HandleExcept
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication_ActionFilterKullanimi", "WebApplication_ActionFilterKullanimi\WebApplication_ActionFilterKullanimi.csproj", "{F9392923-385E-4AE1-87FA-023FE98DADC0}"
 EndProject
+<<<<<<< HEAD
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication_BasicAuth", "WebApplication_BasicAuth\WebApplication_BasicAuth.csproj", "{7F30EF99-3732-4E75-83EF-9B5E9A8F470F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication_JwtAuth", "WebApplication_JwtAuth\WebApplication_JwtAuth.csproj", "{7F07A88E-90EF-44E7-A389-17775AA100EA}"
@@ -28,6 +29,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Admin", "Admin", "{40E28EF4-5A34-46A5-9147-B5FB8E81586E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminApp", "AdminApp\AdminApp.csproj", "{BA4A2366-777B-480F-B957-3D9CE28B5356}"
+=======
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication_BasicAuth", "WebApplication_BasicAuth\WebApplication_BasicAuth.csproj", "{7F30EF99-3732-4E75-83EF-9B5E9A8F470F}"
+>>>>>>> parent of 07a7b29 (JWT Auth)
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +51,7 @@ Global
 		{7F30EF99-3732-4E75-83EF-9B5E9A8F470F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F30EF99-3732-4E75-83EF-9B5E9A8F470F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F30EF99-3732-4E75-83EF-9B5E9A8F470F}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< HEAD
 		{7F07A88E-90EF-44E7-A389-17775AA100EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7F07A88E-90EF-44E7-A389-17775AA100EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F07A88E-90EF-44E7-A389-17775AA100EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -75,6 +80,8 @@ Global
 		{BA4A2366-777B-480F-B957-3D9CE28B5356}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA4A2366-777B-480F-B957-3D9CE28B5356}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA4A2366-777B-480F-B957-3D9CE28B5356}.Release|Any CPU.Build.0 = Release|Any CPU
+=======
+>>>>>>> parent of 07a7b29 (JWT Auth)
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

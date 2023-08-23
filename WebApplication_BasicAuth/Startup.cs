@@ -34,26 +34,6 @@ namespace WebApplication_BasicAuth
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApplication_BasicAuth", Version = "v1" });
-
-                c.AddSecurityDefinition("basic", new OpenApiSecurityScheme
-                {
-                    Description = "Burada basic auth bilgilerinizi giriniz.",
-                    Name = "Authorization",
-                    In = ParameterLocation.Header,
-                    Scheme = "basic",
-                    Type = SecuritySchemeType.Http
-                });
-
-                c.AddSecurityRequirement(new OpenApiSecurityRequirement
-                {
-                    {
-                        new OpenApiSecurityScheme
-                        {
-                            Reference=new OpenApiReference{ Type = ReferenceType.SecurityScheme,Id="basic"}
-                        },
-                        new List<string>()
-                    }
-                });
             });
         }
 
